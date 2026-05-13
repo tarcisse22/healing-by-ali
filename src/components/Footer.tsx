@@ -1,0 +1,90 @@
+export default function Footer() {
+  return (
+    <footer className="bg-warm-brown-dark text-cream-dark py-12">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="grid md:grid-cols-3 gap-8 items-start">
+          {/* Brand */}
+          <div>
+            <p className="font-[family-name:var(--font-playfair)] text-xl font-bold text-cream-light">
+              Healing by Ali
+            </p>
+            <p className="text-sm mt-2 text-cream-dark/80">
+              Helping your body move, recover, and perform better.
+            </p>
+          </div>
+
+          {/* Quick links */}
+          <div>
+            <p className="font-semibold text-cream-light mb-3 text-sm uppercase tracking-wider">
+              Quick Links
+            </p>
+            <div className="space-y-2">
+              <a
+                href="#about"
+                className="block text-sm text-cream-dark hover:text-cream-light transition-colors"
+              >
+                About
+              </a>
+              <a
+                href="#services"
+                className="block text-sm text-cream-dark hover:text-cream-light transition-colors"
+              >
+                Services
+              </a>
+              <a
+                href="#massage"
+                className="block text-sm text-cream-dark hover:text-cream-light transition-colors"
+              >
+                Massage &amp; Recovery
+              </a>
+              <a
+                href="#location"
+                className="block text-sm text-cream-dark hover:text-cream-light transition-colors"
+              >
+                Location
+              </a>
+              <a
+                href="#contact"
+                className="block text-sm text-cream-dark hover:text-cream-light transition-colors"
+              >
+                Contact
+              </a>
+            </div>
+          </div>
+
+          {/* Contact info */}
+          <div>
+            <p className="font-semibold text-cream-light mb-3 text-sm uppercase tracking-wider">
+              Contact
+            </p>
+            <div className="space-y-2 text-sm">
+              <a
+                href="tel:+16784047184"
+                className="block text-cream-dark hover:text-cream-light transition-colors"
+              >
+                (678) 404-7184
+              </a>
+              <a
+                href="https://instagram.com/healingbyali_coach"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-cream-dark hover:text-cream-light transition-colors"
+              >
+                @healingbyali_coach
+              </a>
+              <p className="text-cream-dark/80">
+                5370 Stone Mountain Hwy, Suite 770
+                <br />
+                Stone Mountain, GA 30087
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-10 pt-6 border-t border-cream-dark/20 text-center text-xs text-cream-dark/60">
+          &copy; {new Date().getFullYear()} Healing by Ali. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  );
+}
