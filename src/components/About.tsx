@@ -26,7 +26,7 @@ export default function About() {
               <p>
                 My focus is on building strength, stamina, and mobility through
                 personalized training plans, while also offering recovery
-                treatments like STEM therapy, cupping, and targeted stretching to
+                treatments like Muscle Stimulation Therapy (EMS), cupping, and targeted stretching to
                 relieve pain, soreness, and tightness.
               </p>
               <p className="font-semibold text-warm-brown-dark italic">
@@ -64,7 +64,10 @@ export default function About() {
                       Georgia State University
                     </p>
                     <p className="text-sm text-warm-brown-light">
-                      Kinesiology and Health
+                      Associate Degree in Kinesiology &amp; Health
+                    </p>
+                    <p className="text-xs text-gold-dark">
+                      Expected Summer 2026
                     </p>
                   </div>
                 </div>

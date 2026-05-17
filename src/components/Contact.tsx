@@ -19,7 +19,7 @@ export default function Contact() {
           <div className="grid sm:grid-cols-3 gap-6 mb-12">
             {/* Phone */}
             <a
-              href="tel:+16784047184"
+              href="tel:+14703993351"
               className="bg-cream rounded-2xl p-6 text-center hover:shadow-lg transition-shadow group"
             >
               <div className="w-12 h-12 rounded-full bg-gold/20 flex items-center justify-center mx-auto mb-4 group-hover:bg-gold/30 transition-colors">
@@ -38,7 +38,7 @@ export default function Contact() {
                 </svg>
               </div>
               <p className="font-semibold text-warm-brown-dark">Call</p>
-              <p className="text-sm text-warm-brown mt-1">(678) 404-7184</p>
+              <p className="text-sm text-warm-brown mt-1">(470) 399-3351</p>
             </a>
 
             {/* Instagram */}
@@ -98,19 +98,19 @@ export default function Contact() {
           {/* CTA */}
           <div className="bg-gradient-to-br from-warm-brown-dark to-warm-brown rounded-2xl p-10 text-center text-cream-light space-y-4">
             <h3 className="font-[family-name:var(--font-playfair)] text-2xl font-bold">
-              Start Your Journey Today
+              Start Your Recovery &amp; Performance Journey Today
             </h3>
             <p className="text-cream-dark max-w-md mx-auto">
               Whether you&apos;re a beginner or an athlete, I&apos;ll create a
               personalized plan to help you reach your goals safely and
-              effectively.
+              effectively. Book your first session now.
             </p>
             <div className="flex flex-wrap justify-center gap-4 pt-2">
               <a
-                href="tel:+16784047184"
+                href="tel:+14703993351"
                 className="rounded-full bg-cream-light px-8 py-3 font-semibold text-warm-brown-dark hover:bg-off-white transition-colors"
               >
-                Call (678) 404-7184
+                Call (470) 399-3351
               </a>
               <a
                 href="https://instagram.com/healingbyali_coach"

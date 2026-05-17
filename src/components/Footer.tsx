@@ -38,6 +38,18 @@ export default function Footer() {
                 Massage &amp; Recovery
               </a>
               <a
+                href="#policies"
+                className="block text-sm text-cream-dark hover:text-cream-light transition-colors"
+              >
+                Policies
+              </a>
+              <a
+                href="#faq"
+                className="block text-sm text-cream-dark hover:text-cream-light transition-colors"
+              >
+                FAQ
+              </a>
+              <a
                 href="#location"
                 className="block text-sm text-cream-dark hover:text-cream-light transition-colors"
               >
@@ -59,10 +71,10 @@ export default function Footer() {
             </p>
             <div className="space-y-2 text-sm">
               <a
-                href="tel:+16784047184"
+                href="tel:+14703993351"
                 className="block text-cream-dark hover:text-cream-light transition-colors"
               >
-                (678) 404-7184
+                (470) 399-3351
               </a>
               <a
                 href="https://instagram.com/healingbyali_coach"

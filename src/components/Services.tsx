@@ -22,7 +22,7 @@ const services = [
       "Strength and conditioning training",
       "Beginner to advanced training",
     ],
-    note: "*Mobile service available based on distance.",
+    note: "*Mobile service available — pricing may vary based on travel distance.",
     accent: "bg-gold/20",
     textAccent: "text-gold-dark",
   },
@@ -50,6 +50,7 @@ const services = [
       "Muscle activation",
       "Injury recovery support",
     ],
+    note: "*Mobile service available — pricing may vary based on travel distance.",
     accent: "bg-sage/20",
     textAccent: "text-sage",
   },
@@ -69,12 +70,13 @@ const services = [
         />
       </svg>
     ),
-    title: "Workout Plans",
-    price: "$50 per custom plan",
+    title: "Personalized Workout Plans",
+    price: "$55 per custom plan",
     items: [
-      "Strength training programs",
-      "Weight loss programs",
-      "Mobility and recovery routines",
+      "Fully customized based on your goals and desired results",
+      "Tailored to limitations, injuries, and experience level",
+      "Built around exercises you enjoy and ones to avoid",
+      "A personalized coaching experience — not just a PDF",
     ],
     accent: "bg-warm-brown/10",
     textAccent: "text-warm-brown",
@@ -149,6 +151,50 @@ export default function Services() {
               )}
             </div>
           ))}
+        </div>
+
+        {/* Appointment Notice */}
+        <div className="bg-gold-light/30 rounded-2xl p-8 mb-12 text-center">
+          <div className="flex items-center justify-center gap-3 mb-3">
+            <svg className="w-6 h-6 text-gold-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <h3 className="font-[family-name:var(--font-playfair)] text-xl font-bold text-warm-brown-dark">
+              Appointment Required
+            </h3>
+          </div>
+          <p className="text-warm-brown">
+            Please call before coming. All sessions must be scheduled in advance before arrival.
+          </p>
+          <a href="tel:+14703993351" className="inline-block mt-3 font-semibold text-gold-dark hover:text-warm-brown-dark transition-colors">
+            Call (470) 399-3351 to book
+          </a>
+        </div>
+
+        {/* Free Consultation */}
+        <div className="bg-sage-light/20 rounded-2xl p-8 mb-12 text-center">
+          <h3 className="font-[family-name:var(--font-playfair)] text-xl font-bold text-warm-brown-dark mb-2">
+            Free 10-Minute Phone Consultation
+          </h3>
+          <p className="text-warm-brown mb-4">
+            Not sure where to start? Call for a free consultation to discuss your goals and find the right plan for you.
+          </p>
+          <a href="tel:+14703993351" className="rounded-full bg-warm-brown-dark px-6 py-2.5 text-sm font-semibold text-cream-light hover:bg-warm-brown transition-colors">
+            Call Now
+          </a>
+        </div>
+
+        {/* Training-Specific Rules */}
+        <div className="bg-off-white rounded-2xl p-8 shadow-md mb-12">
+          <h3 className="font-[family-name:var(--font-playfair)] text-xl font-bold text-warm-brown-dark mb-4">
+            Training Guidelines
+          </h3>
+          <ul className="check-list space-y-3 text-warm-brown">
+            <li>Come ready to train (proper clothing, hydration)</li>
+            <li>Be on time — your session starts at your scheduled time</li>
+            <li>Communicate any injuries or limitations beforehand</li>
+            <li>Mobile training available upon request</li>
+          </ul>
         </div>
 
         {/* Benefits and Perfect For */}
