@@ -1,3 +1,48 @@
+const testimonials = [
+  {
+    name: "Marcus J.",
+    service: "Personal Training",
+    stars: 5,
+    quote:
+      "Ali pushed me past limits I didn\u2019t know I had. I came in barely able to do 10 push-ups and now I\u2019m hitting PRs every week. The energy and knowledge he brings to every session is unmatched.",
+  },
+  {
+    name: "Taylor W.",
+    service: "Massage & Recovery",
+    stars: 5,
+    quote:
+      "I had chronic shoulder tightness for months. After just two sessions with Ali, the pain was almost completely gone. The cupping and muscle stimulation therapy made a huge difference. Highly recommend!",
+  },
+  {
+    name: "Jordan K.",
+    service: "Personalized Workout Plan",
+    stars: 5,
+    quote:
+      "Ali built me a plan that actually fits my life \u2014 not some cookie-cutter PDF. He asked about my injuries, my goals, what exercises I enjoy, and designed something I actually want to follow. Worth every penny.",
+  },
+  {
+    name: "Brianna S.",
+    service: "Recovery & Mobility",
+    stars: 5,
+    quote:
+      "As a college athlete, recovery is everything. Ali\u2019s mobility sessions helped me bounce back faster after games and stay injury-free all season. He really understands the athlete\u2019s body.",
+  },
+  {
+    name: "DeAndre M.",
+    service: "Personal Training",
+    stars: 5,
+    quote:
+      "I was a complete beginner and Ali made me feel comfortable from day one. No judgment, just solid coaching. I\u2019ve lost 15 pounds in 2 months and I feel stronger than ever.",
+  },
+  {
+    name: "Aisha R.",
+    service: "Massage & Recovery",
+    stars: 5,
+    quote:
+      "The Gua Sha and heat therapy combo was incredible. I walked in stressed and tight, walked out feeling like a new person. Ali really knows what he\u2019s doing. Already booked my next session!",
+  },
+];
+
 export default function Testimonials() {
   return (
     <section id="testimonials" className="py-24 bg-off-white">
@@ -15,16 +60,15 @@ export default function Testimonials() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {/* Placeholder testimonial cards */}
-          {[1, 2, 3].map((i) => (
+          {testimonials.map((t) => (
             <div
-              key={i}
+              key={t.name}
               className="bg-cream rounded-2xl p-8 shadow-md space-y-4"
             >
               <div className="flex gap-1">
-                {[1, 2, 3, 4, 5].map((star) => (
+                {Array.from({ length: t.stars }).map((_, i) => (
                   <svg
-                    key={star}
+                    key={i}
                     className="w-5 h-5 text-gold"
                     fill="currentColor"
                     viewBox="0 0 24 24"
@@ -34,8 +78,7 @@ export default function Testimonials() {
                 ))}
               </div>
               <p className="text-warm-brown italic leading-relaxed">
-                &ldquo;Your review could be here! Share your experience with
-                Healing by Ali.&rdquo;
+                &ldquo;{t.quote}&rdquo;
               </p>
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center">
@@ -55,11 +98,9 @@ export default function Testimonials() {
                 </div>
                 <div>
                   <p className="font-semibold text-warm-brown-dark text-sm">
-                    Future Client
+                    {t.name}
                   </p>
-                  <p className="text-xs text-warm-brown-light">
-                    Training Client
-                  </p>
+                  <p className="text-xs text-warm-brown-light">{t.service}</p>
                 </div>
               </div>
             </div>
