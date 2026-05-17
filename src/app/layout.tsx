@@ -16,7 +16,7 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: "Healing by Ali — Personal Training & Recovery Services",
   description:
-    "Professional personal training, recovery, and therapeutic massage services by Ali Diakite. Strength & conditioning, cupping therapy, STEM therapy, and more in Stone Mountain, GA.",
+    "Professional personal training, recovery, and therapeutic massage services by Ali Diakite. Strength & conditioning, cupping therapy, Muscle Stimulation Therapy (EMS), and more in Stone Mountain, GA.",
   keywords: [
     "personal training",
     "recovery",

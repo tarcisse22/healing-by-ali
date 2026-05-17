@@ -7,6 +7,8 @@ const navLinks = [
   { href: "#about", label: "About" },
   { href: "#services", label: "Services" },
   { href: "#massage", label: "Massage & Recovery" },
+  { href: "#policies", label: "Policies" },
+  { href: "#faq", label: "FAQ" },
   { href: "#location", label: "Location" },
   { href: "#contact", label: "Contact" },
 ];

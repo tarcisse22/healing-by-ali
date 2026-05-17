@@ -76,10 +76,10 @@ export default function Location() {
                 <div>
                   <p className="font-semibold text-warm-brown-dark">Phone</p>
                   <a
-                    href="tel:+16784047184"
+                    href="tel:+14703993351"
                     className="text-warm-brown hover:text-gold-dark transition-colors"
                   >
-                    (678) 404-7184
+                    (470) 399-3351
                   </a>
                 </div>
               </div>
@@ -104,8 +104,12 @@ export default function Location() {
                 <div>
                   <p className="font-semibold text-warm-brown-dark">Hours</p>
                   <div className="text-warm-brown text-sm space-y-1">
-                    <p>Sat — Mon: 10:00 AM – 5:00 PM</p>
-                    <p>Wed — Thu: 10:00 AM – 5:00 PM</p>
+                    <p>Monday: 5:30 PM – 10:00 PM</p>
+                    <p>Wednesday: 5:30 PM – 10:00 PM</p>
+                    <p>Thursday: 8:00 AM – 10:00 PM</p>
+                    <p>Friday: 5:30 PM – 10:00 PM</p>
+                    <p>Saturday: 5:30 PM – 10:00 PM</p>
+                    <p>Sunday: 5:30 PM – 10:00 PM</p>
                   </div>
                 </div>
               </div>
