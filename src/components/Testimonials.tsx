@@ -20,27 +20,6 @@ const testimonials = [
     quote:
       "Ali built me a plan that actually fits my life \u2014 not some cookie-cutter PDF. He asked about my injuries, my goals, what exercises I enjoy, and designed something I actually want to follow. Worth every penny.",
   },
-  {
-    name: "Brianna S.",
-    service: "Recovery & Mobility",
-    stars: 5,
-    quote:
-      "As a college athlete, recovery is everything. Ali\u2019s mobility sessions helped me bounce back faster after games and stay injury-free all season. He really understands the athlete\u2019s body.",
-  },
-  {
-    name: "DeAndre M.",
-    service: "Personal Training",
-    stars: 5,
-    quote:
-      "I was a complete beginner and Ali made me feel comfortable from day one. No judgment, just solid coaching. I\u2019ve lost 15 pounds in 2 months and I feel stronger than ever.",
-  },
-  {
-    name: "Aisha R.",
-    service: "Massage & Recovery",
-    stars: 5,
-    quote:
-      "The Gua Sha and heat therapy combo was incredible. I walked in stressed and tight, walked out feeling like a new person. Ali really knows what he\u2019s doing. Already booked my next session!",
-  },
 ];
 
 export default function Testimonials() {
