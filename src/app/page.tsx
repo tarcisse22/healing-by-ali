@@ -9,21 +9,26 @@ import FAQ from "@/components/FAQ";
 import Location from "@/components/Location";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import { getAllContent } from "@/lib/store";
 
-export default function Home() {
+export const revalidate = 60;
+
+export default async function Home() {
+  const content = await getAllContent();
+
   return (
     <>
       <Header />
       <main>
         <Hero />
         <About />
-        <Services />
+        <Services services={content.services} />
         <MassageRecovery />
         <Policies />
-        <Testimonials />
+        <Testimonials testimonials={content.testimonials} />
         <FAQ />
-        <Location />
-        <Contact />
+        <Location hours={content.hours} contact={content.contact} />
+        <Contact contact={content.contact} />
       </main>
       <Footer />
     </>
