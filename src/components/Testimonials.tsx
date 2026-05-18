@@ -1,28 +1,11 @@
-const testimonials = [
-  {
-    name: "Marcus J.",
-    service: "Personal Training",
-    stars: 5,
-    quote:
-      "Ali pushed me past limits I didn\u2019t know I had. I came in barely able to do 10 push-ups and now I\u2019m hitting PRs every week. The energy and knowledge he brings to every session is unmatched.",
-  },
-  {
-    name: "Taylor W.",
-    service: "Massage & Recovery",
-    stars: 5,
-    quote:
-      "I had chronic shoulder tightness for months. After just two sessions with Ali, the pain was almost completely gone. The cupping and muscle stimulation therapy made a huge difference. Highly recommend!",
-  },
-  {
-    name: "Jordan K.",
-    service: "Personalized Workout Plan",
-    stars: 5,
-    quote:
-      "Ali built me a plan that actually fits my life \u2014 not some cookie-cutter PDF. He asked about my injuries, my goals, what exercises I enjoy, and designed something I actually want to follow. Worth every penny.",
-  },
-];
+import { type TestimonialItem, DEFAULT_TESTIMONIALS } from "@/lib/defaults";
 
-export default function Testimonials() {
+interface TestimonialsProps {
+  testimonials?: TestimonialItem[];
+}
+
+export default function Testimonials({ testimonials: testimonialsData }: TestimonialsProps) {
+  const testimonials = testimonialsData || DEFAULT_TESTIMONIALS;
   return (
     <section id="testimonials" className="py-24 bg-off-white">
       <div className="mx-auto max-w-7xl px-6">

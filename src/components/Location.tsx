@@ -1,4 +1,22 @@
-export default function Location() {
+import { type ContactInfo } from "@/lib/defaults";
+
+interface LocationProps {
+  hours?: Record<string, string>;
+  contact?: ContactInfo;
+}
+
+export default function Location({ hours, contact }: LocationProps) {
+  const phone = contact?.phone || "(470) 399-3351";
+  const phoneDigits = phone.replace(/\D/g, "");
+  const instagram = contact?.instagram || "@healingbyali_coach";
+  const instagramUrl = contact?.instagram_url || "https://instagram.com/healingbyali_coach";
+
+  const dayOrder = ["monday", "wednesday", "thursday", "friday", "saturday", "sunday"];
+  const hourEntries = hours
+    ? dayOrder
+        .filter((day) => hours[day])
+        .map((day) => `${day.charAt(0).toUpperCase() + day.slice(1)}: ${hours[day]}`)
+    : null;
   return (
     <section id="location" className="py-24 bg-cream">
       <div className="mx-auto max-w-7xl px-6">
@@ -76,10 +94,10 @@ export default function Location() {
                 <div>
                   <p className="font-semibold text-warm-brown-dark">Phone</p>
                   <a
-                    href="tel:+14703993351"
+                    href={`tel:+1${phoneDigits}`}
                     className="text-warm-brown hover:text-gold-dark transition-colors"
                   >
-                    (470) 399-3351
+                    {phone}
                   </a>
                 </div>
               </div>
@@ -104,12 +122,20 @@ export default function Location() {
                 <div>
                   <p className="font-semibold text-warm-brown-dark">Hours</p>
                   <div className="text-warm-brown text-sm space-y-1">
-                    <p>Monday: 5:30 PM – 10:00 PM</p>
-                    <p>Wednesday: 5:30 PM – 10:00 PM</p>
-                    <p>Thursday: 8:00 AM – 10:00 PM</p>
-                    <p>Friday: 5:30 PM – 10:00 PM</p>
-                    <p>Saturday: 5:30 PM – 10:00 PM</p>
-                    <p>Sunday: 5:30 PM – 10:00 PM</p>
+                    {hourEntries ? (
+                      hourEntries.map((entry) => (
+                        <p key={entry}>{entry}</p>
+                      ))
+                    ) : (
+                      <>
+                        <p>Monday: 5:30 PM – 10:00 PM</p>
+                        <p>Wednesday: 5:30 PM – 10:00 PM</p>
+                        <p>Thursday: 8:00 AM – 10:00 PM</p>
+                        <p>Friday: 5:30 PM – 10:00 PM</p>
+                        <p>Saturday: 5:30 PM – 10:00 PM</p>
+                        <p>Sunday: 5:30 PM – 10:00 PM</p>
+                      </>
+                    )}
                   </div>
                 </div>
               </div>
@@ -130,12 +156,12 @@ export default function Location() {
                     Instagram
                   </p>
                   <a
-                    href="https://instagram.com/healingbyali_coach"
+                    href={instagramUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-warm-brown hover:text-gold-dark transition-colors"
                   >
-                    @healingbyali_coach
+                    {instagram}
                   </a>
                 </div>
               </div>

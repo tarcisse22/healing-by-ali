@@ -1,4 +1,14 @@
-export default function Contact() {
+import { type ContactInfo } from "@/lib/defaults";
+
+interface ContactProps {
+  contact?: ContactInfo;
+}
+
+export default function Contact({ contact }: ContactProps) {
+  const phone = contact?.phone || "(470) 399-3351";
+  const phoneDigits = phone.replace(/\D/g, "");
+  const instagram = contact?.instagram || "@healingbyali_coach";
+  const instagramUrl = contact?.instagram_url || "https://instagram.com/healingbyali_coach";
   return (
     <section id="contact" className="py-24 bg-off-white">
       <div className="mx-auto max-w-7xl px-6">
@@ -19,7 +29,7 @@ export default function Contact() {
           <div className="grid sm:grid-cols-3 gap-6 mb-12">
             {/* Phone */}
             <a
-              href="tel:+14703993351"
+              href={`tel:+1${phoneDigits}`}
               className="bg-cream rounded-2xl p-6 text-center hover:shadow-lg transition-shadow group"
             >
               <div className="w-12 h-12 rounded-full bg-gold/20 flex items-center justify-center mx-auto mb-4 group-hover:bg-gold/30 transition-colors">
@@ -38,12 +48,12 @@ export default function Contact() {
                 </svg>
               </div>
               <p className="font-semibold text-warm-brown-dark">Call</p>
-              <p className="text-sm text-warm-brown mt-1">(470) 399-3351</p>
+              <p className="text-sm text-warm-brown mt-1">{phone}</p>
             </a>
 
             {/* Instagram */}
             <a
-              href="https://instagram.com/healingbyali_coach"
+              href={instagramUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-cream rounded-2xl p-6 text-center hover:shadow-lg transition-shadow group"
@@ -59,7 +69,7 @@ export default function Contact() {
               </div>
               <p className="font-semibold text-warm-brown-dark">Instagram</p>
               <p className="text-sm text-warm-brown mt-1">
-                @healingbyali_coach
+                {instagram}
               </p>
             </a>
 
@@ -107,13 +117,13 @@ export default function Contact() {
             </p>
             <div className="flex flex-wrap justify-center gap-4 pt-2">
               <a
-                href="tel:+14703993351"
+                href={`tel:+1${phoneDigits}`}
                 className="rounded-full bg-cream-light px-8 py-3 font-semibold text-warm-brown-dark hover:bg-off-white transition-colors"
               >
-                Call (470) 399-3351
+                Call {phone}
               </a>
               <a
-                href="https://instagram.com/healingbyali_coach"
+                href={instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-full border-2 border-cream-light px-8 py-3 font-semibold text-cream-light hover:bg-cream-light hover:text-warm-brown-dark transition-colors"
