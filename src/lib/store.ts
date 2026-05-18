@@ -68,6 +68,39 @@ export async function setTestimonials(testimonials: TestimonialItem[]): Promise<
   return setValue("testimonials", testimonials);
 }
 
+export async function getPendingTestimonials(): Promise<TestimonialItem[]> {
+  return getValue("pending_testimonials", []);
+}
+
+export async function setPendingTestimonials(testimonials: TestimonialItem[]): Promise<boolean> {
+  return setValue("pending_testimonials", testimonials);
+}
+
+export async function addPendingTestimonial(testimonial: TestimonialItem): Promise<boolean> {
+  const pending = await getPendingTestimonials();
+  pending.push(testimonial);
+  return setPendingTestimonials(pending);
+}
+
+export async function approvePendingTestimonial(index: number): Promise<boolean> {
+  const pending = await getPendingTestimonials();
+  if (index < 0 || index >= pending.length) return false;
+  const approved = pending[index];
+  const current = await getTestimonials();
+  current.push(approved);
+  const ok = await setTestimonials(current);
+  if (!ok) return false;
+  pending.splice(index, 1);
+  return setPendingTestimonials(pending);
+}
+
+export async function rejectPendingTestimonial(index: number): Promise<boolean> {
+  const pending = await getPendingTestimonials();
+  if (index < 0 || index >= pending.length) return false;
+  pending.splice(index, 1);
+  return setPendingTestimonials(pending);
+}
+
 export async function getContact(): Promise<ContactInfo> {
   return getValue("contact", DEFAULT_CONTACT);
 }
@@ -77,13 +110,14 @@ export async function setContact(contact: ContactInfo): Promise<boolean> {
 }
 
 export async function getAllContent() {
-  const [hours, services, testimonials, contact] = await Promise.all([
+  const [hours, services, testimonials, contact, pendingTestimonials] = await Promise.all([
     getHours(),
     getServices(),
     getTestimonials(),
     getContact(),
+    getPendingTestimonials(),
   ]);
-  return { hours, services, testimonials, contact };
+  return { hours, services, testimonials, contact, pendingTestimonials };
 }
 
 export function isStoreConfigured(): boolean {

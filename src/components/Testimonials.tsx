@@ -1,4 +1,5 @@
 import { type TestimonialItem, DEFAULT_TESTIMONIALS } from "@/lib/defaults";
+import ReviewForm from "./ReviewForm";
 
 interface TestimonialsProps {
   testimonials?: TestimonialItem[];
@@ -69,29 +70,8 @@ export default function Testimonials({ testimonials: testimonialsData }: Testimo
           ))}
         </div>
 
-        <div className="text-center mt-12">
-          <p className="text-warm-brown mb-4">
-            Had a session with Ali? We&apos;d love to hear about your
-            experience!
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSeGZu0xABve698WuCk2dw6WGs8knCT1NZgQkiga5jPVHMf6CQ/viewform"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full bg-warm-brown-dark px-8 py-3 text-sm font-semibold text-cream-light hover:bg-warm-brown transition-colors"
-            >
-              Leave a Review
-            </a>
-            <a
-              href="https://instagram.com/healingbyali_coach"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full border-2 border-warm-brown-dark px-8 py-3 text-sm font-semibold text-warm-brown-dark hover:bg-warm-brown-dark hover:text-cream-light transition-colors"
-            >
-              DM on Instagram
-            </a>
-          </div>
+        <div className="mt-16">
+          <ReviewForm />
         </div>
       </div>
     </section>
