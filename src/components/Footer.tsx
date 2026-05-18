@@ -93,8 +93,14 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 pt-6 border-t border-cream-dark/20 text-center text-xs text-cream-dark/60">
-          &copy; {new Date().getFullYear()} Healing by Ali. All rights reserved.
+        <div className="mt-10 pt-6 border-t border-cream-dark/20 flex items-center justify-between text-xs text-cream-dark/60">
+          <span>&copy; {new Date().getFullYear()} Healing by Ali. All rights reserved.</span>
+          <a
+            href="/admin"
+            className="text-cream-dark/40 hover:text-cream-dark transition-colors"
+          >
+            Owner Login
+          </a>
         </div>
       </div>
     </footer>
