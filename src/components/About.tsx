@@ -61,38 +61,10 @@ export default function About() {
                   </div>
                   <div>
                     <p className="font-semibold text-warm-brown-dark">
-                      Georgia State University
-                    </p>
-                    <p className="text-sm text-warm-brown-light">
                       Associate Degree in Kinesiology &amp; Health
                     </p>
-                    <p className="text-xs text-gold-dark">
-                      Expected Summer 2026
-                    </p>
-                  </div>
-                </div>
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center">
-                    <svg
-                      className="w-5 h-5 text-gold-dark"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M4.26 10.147a60.438 60.438 0 00-.491 6.347A48.62 48.62 0 0112 20.904a48.62 48.62 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.636 50.636 0 00-2.658-.813A59.906 59.906 0 0112 3.493a59.903 59.903 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0112 13.489a50.702 50.702 0 017.74-3.342"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-warm-brown-dark">
-                      Wittenberg University
-                    </p>
                     <p className="text-sm text-warm-brown-light">
-                      Exercise Science &amp; Athlete Program Development
+                      Georgia State University
                     </p>
                   </div>
                 </div>
@@ -115,6 +87,9 @@ export default function About() {
                   <div>
                     <p className="font-semibold text-warm-brown-dark">
                       Personal Training Certification
+                    </p>
+                    <p className="text-sm text-warm-brown-light">
+                      Georgia State University
                     </p>
                   </div>
                 </div>
@@ -162,6 +137,34 @@ export default function About() {
                   <div>
                     <p className="font-semibold text-warm-brown-dark">
                       Entrepreneurship Certificate
+                    </p>
+                    <p className="text-sm text-warm-brown-light">
+                      Georgia State University
+                    </p>
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center">
+                    <svg
+                      className="w-5 h-5 text-gold-dark"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M4.26 10.147a60.438 60.438 0 00-.491 6.347A48.62 48.62 0 0112 20.904a48.62 48.62 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.636 50.636 0 00-2.658-.813A59.906 59.906 0 0112 3.493a59.903 59.903 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0112 13.489a50.702 50.702 0 017.74-3.342"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-warm-brown-dark">
+                      Exercise Science &amp; Athlete Program Development
+                    </p>
+                    <p className="text-sm text-warm-brown-light">
+                      Wittenberg University
                     </p>
                   </div>
                 </div>
