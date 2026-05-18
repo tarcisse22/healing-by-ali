@@ -28,7 +28,7 @@ interface ContactInfo {
   cashapp: string;
 }
 
-type Tab = "hours" | "services" | "testimonials" | "contact";
+type Tab = "hours" | "services" | "testimonials" | "pending" | "contact";
 
 export default function AdminPage() {
   const [token, setToken] = useState("");
@@ -51,6 +51,8 @@ export default function AdminPage() {
   });
   const [services, setServices] = useState<ServiceItem[]>([]);
   const [testimonials, setTestimonials] = useState<TestimonialItem[]>([]);
+  const [pendingReviews, setPendingReviews] = useState<TestimonialItem[]>([]);
+  const [pendingAction, setPendingAction] = useState<number | null>(null);
   const [contact, setContact] = useState<ContactInfo>({
     phone: "",
     instagram: "",
@@ -70,6 +72,9 @@ export default function AdminPage() {
         setServices(data.services);
         setTestimonials(data.testimonials);
         setContact(data.contact);
+        if (data.pendingTestimonials) {
+          setPendingReviews(data.pendingTestimonials);
+        }
       }
     } catch {
       /* use defaults */
@@ -247,6 +252,7 @@ export default function AdminPage() {
               { key: "hours", label: "Hours" },
               { key: "services", label: "Services" },
               { key: "testimonials", label: "Testimonials" },
+              { key: "pending", label: `Pending Reviews${pendingReviews.length > 0 ? ` (${pendingReviews.length})` : ""}` },
               { key: "contact", label: "Contact" },
             ] as { key: Tab; label: string }[]
           ).map((tab) => (
@@ -560,6 +566,111 @@ export default function AdminPage() {
                 >
                   {saving ? "Saving..." : "Save Testimonials"}
                 </button>
+              </div>
+            )}
+
+            {/* Pending Reviews Tab */}
+            {activeTab === "pending" && (
+              <div className="space-y-6">
+                <h2 className="font-[family-name:var(--font-playfair)] text-2xl font-bold text-warm-brown-dark">
+                  Pending Reviews
+                </h2>
+                <p className="text-warm-brown text-sm">
+                  Reviews submitted by clients waiting for your approval. Approved reviews will appear on the website.
+                </p>
+                {pendingReviews.length === 0 ? (
+                  <div className="bg-off-white rounded-2xl p-8 shadow-md text-center">
+                    <p className="text-warm-brown">No pending reviews right now.</p>
+                  </div>
+                ) : (
+                  pendingReviews.map((review, ri) => (
+                    <div
+                      key={ri}
+                      className="bg-off-white rounded-2xl p-6 shadow-md"
+                    >
+                      <div className="flex items-start justify-between mb-3">
+                        <div>
+                          <p className="font-semibold text-warm-brown-dark">{review.name}</p>
+                          <p className="text-sm text-warm-brown-light">{review.service}</p>
+                        </div>
+                        <div className="flex gap-1">
+                          {Array.from({ length: review.stars }).map((_, i) => (
+                            <svg
+                              key={i}
+                              className="w-4 h-4 text-gold"
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                            </svg>
+                          ))}
+                        </div>
+                      </div>
+                      <p className="text-warm-brown italic mb-4">&ldquo;{review.quote}&rdquo;</p>
+                      <div className="flex gap-3">
+                        <button
+                          onClick={async () => {
+                            setPendingAction(ri);
+                            try {
+                              const res = await fetch("/api/pending-testimonials", {
+                                method: "POST",
+                                headers: {
+                                  "Content-Type": "application/json",
+                                  Authorization: `Bearer ${token}`,
+                                },
+                                body: JSON.stringify({ action: "approve", index: ri }),
+                              });
+                              if (res.ok) {
+                                setPendingReviews(pendingReviews.filter((_, i) => i !== ri));
+                                setTestimonials([...testimonials, review]);
+                                setSaveMsg("Review approved and published!");
+                              } else {
+                                setSaveMsg("Failed to approve review.");
+                              }
+                            } catch {
+                              setSaveMsg("Failed to approve review.");
+                            }
+                            setPendingAction(null);
+                            setTimeout(() => setSaveMsg(""), 3000);
+                          }}
+                          disabled={pendingAction === ri}
+                          className="bg-green-600 text-white px-5 py-2 rounded-lg font-semibold text-sm hover:bg-green-700 transition-colors disabled:opacity-50"
+                        >
+                          {pendingAction === ri ? "Processing..." : "Approve"}
+                        </button>
+                        <button
+                          onClick={async () => {
+                            setPendingAction(ri);
+                            try {
+                              const res = await fetch("/api/pending-testimonials", {
+                                method: "POST",
+                                headers: {
+                                  "Content-Type": "application/json",
+                                  Authorization: `Bearer ${token}`,
+                                },
+                                body: JSON.stringify({ action: "reject", index: ri }),
+                              });
+                              if (res.ok) {
+                                setPendingReviews(pendingReviews.filter((_, i) => i !== ri));
+                                setSaveMsg("Review rejected.");
+                              } else {
+                                setSaveMsg("Failed to reject review.");
+                              }
+                            } catch {
+                              setSaveMsg("Failed to reject review.");
+                            }
+                            setPendingAction(null);
+                            setTimeout(() => setSaveMsg(""), 3000);
+                          }}
+                          disabled={pendingAction === ri}
+                          className="bg-red-500 text-white px-5 py-2 rounded-lg font-semibold text-sm hover:bg-red-600 transition-colors disabled:opacity-50"
+                        >
+                          Reject
+                        </button>
+                      </div>
+                    </div>
+                  ))
+                )}
               </div>
             )}
 
