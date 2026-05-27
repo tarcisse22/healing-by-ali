@@ -39,6 +39,63 @@ export default function MassageRecovery() {
           </p>
         </div>
 
+        {/* Massage Pricing */}
+        <div className="grid md:grid-cols-2 gap-8 mb-16">
+          {/* Mobile Services */}
+          <div className="bg-off-white rounded-2xl p-8 shadow-lg shadow-warm-brown/5">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-12 h-12 rounded-xl bg-gold/20 flex items-center justify-center text-gold-dark">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.125-.504 1.125-1.125v-3.637c0-.247-.084-.49-.236-.693l-1.842-2.456A2.25 2.25 0 0016.5 9H5.25a2.25 2.25 0 00-2.25 2.25v5.625m16.5-4.875h-3.375a1.125 1.125 0 01-1.125-1.125V9m4.5 0v-1.5a2.25 2.25 0 00-2.25-2.25H5.25a2.25 2.25 0 00-2.25 2.25v1.5" />
+                </svg>
+              </div>
+              <h3 className="font-[family-name:var(--font-playfair)] text-2xl font-bold text-warm-brown-dark">
+                Mobile Services
+              </h3>
+            </div>
+            <div className="space-y-4">
+              <div className="flex items-center justify-between p-4 bg-cream rounded-xl">
+                <span className="text-warm-brown font-medium">30 Minutes</span>
+                <span className="text-xl font-bold text-gold-dark">$35</span>
+              </div>
+              <div className="flex items-center justify-between p-4 bg-cream rounded-xl">
+                <span className="text-warm-brown font-medium">1 Hour</span>
+                <span className="text-xl font-bold text-gold-dark">$75</span>
+              </div>
+              <p className="text-sm italic text-warm-brown-light mt-4">
+                *Driving fee applies based on distance.
+              </p>
+            </div>
+          </div>
+
+          {/* In-Store Prices */}
+          <div className="bg-off-white rounded-2xl p-8 shadow-lg shadow-warm-brown/5">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-12 h-12 rounded-xl bg-sage/20 flex items-center justify-center text-sage">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 21v-7.5a.75.75 0 01.75-.75h3a.75.75 0 01.75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349m-16.5 11.65V9.35m0 0a3.001 3.001 0 003.75-.615A2.993 2.993 0 009.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 002.25 1.016c.896 0 1.7-.393 2.25-1.016A3.001 3.001 0 0020.25 9.35m-16.5 0c0-.655.21-1.262.563-1.757L6.06 4.418A2.25 2.25 0 018.153 3.5h7.694a2.25 2.25 0 012.093.918l1.747 3.175c.353.495.563 1.102.563 1.757" />
+                </svg>
+              </div>
+              <h3 className="font-[family-name:var(--font-playfair)] text-2xl font-bold text-warm-brown-dark">
+                In-Store Prices
+              </h3>
+            </div>
+            <div className="space-y-4">
+              <div className="flex items-center justify-between p-4 bg-cream rounded-xl">
+                <span className="text-warm-brown font-medium">30 Minutes</span>
+                <span className="text-xl font-bold text-gold-dark">$55</span>
+              </div>
+              <div className="flex items-center justify-between p-4 bg-cream rounded-xl">
+                <span className="text-warm-brown font-medium">1 Hour</span>
+                <span className="text-xl font-bold text-gold-dark">$100</span>
+              </div>
+              <p className="text-sm italic text-warm-brown-light mt-4">
+                *Services provided at Nail Brothers location.
+              </p>
+            </div>
+          </div>
+        </div>
+
         <div className="grid md:grid-cols-3 gap-8 mb-12">
           {/* Available Treatments */}
           <div className="bg-cream rounded-2xl p-8 shadow-md">
