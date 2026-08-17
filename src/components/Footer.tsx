@@ -85,9 +85,7 @@ export default function Footer() {
                 @healingbyali_coach
               </a>
               <p className="text-cream-dark/80">
-                5370 Stone Mountain Hwy, Suite 770
-                <br />
-                Stone Mountain, GA 30087
+                Based in Stone Mountain, GA — by appointment
               </p>
             </div>
           </div>
