@@ -98,9 +98,9 @@ export default function Contact({ contact }: ContactProps) {
                   />
                 </svg>
               </div>
-              <p className="font-semibold text-warm-brown-dark">Visit</p>
+              <p className="font-semibold text-warm-brown-dark">Area</p>
               <p className="text-sm text-warm-brown mt-1">
-                Stone Mountain, GA
+                Based in Stone Mountain
               </p>
             </a>
           </div>

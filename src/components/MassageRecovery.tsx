@@ -4,6 +4,9 @@ const treatments = [
   "Muscle Stimulation Therapy (EMS)",
   "Heat and cold therapy",
   "Muscle scraping (Gua Sha)",
+  "Hot Stone massage",
+  "Tuning forks",
+  "Sound therapy",
 ];
 
 const massageBenefits = [
@@ -27,20 +30,19 @@ export default function MassageRecovery() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="text-center space-y-4 mb-16">
           <p className="text-gold-dark font-semibold tracking-widest uppercase text-sm">
-            Now Available at Nail Brothers
+            Therapeutic Bodywork &amp; Recovery
           </p>
           <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold text-warm-brown-dark">
             Therapeutic Massage &amp; Recovery
           </h2>
           <p className="text-warm-brown max-w-2xl mx-auto text-lg">
             Professional massage services designed to relieve tension, reduce
-            pain, and support overall body recovery — now offered inside{" "}
-            <strong>Nail Brothers</strong>.
+            pain, and support overall body recovery.
           </p>
         </div>
 
         {/* Massage Pricing */}
-        <div className="grid md:grid-cols-2 gap-8 mb-16">
+        <div className="max-w-md mx-auto mb-16">
           {/* Mobile Services */}
           <div className="bg-off-white rounded-2xl p-8 shadow-lg shadow-warm-brown/5">
             <div className="flex items-center gap-3 mb-6">
@@ -64,33 +66,6 @@ export default function MassageRecovery() {
               </div>
               <p className="text-sm italic text-warm-brown-light mt-4">
                 *Driving fee applies based on distance.
-              </p>
-            </div>
-          </div>
-
-          {/* In-Store Prices */}
-          <div className="bg-off-white rounded-2xl p-8 shadow-lg shadow-warm-brown/5">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-xl bg-sage/20 flex items-center justify-center text-sage">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 21v-7.5a.75.75 0 01.75-.75h3a.75.75 0 01.75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349m-16.5 11.65V9.35m0 0a3.001 3.001 0 003.75-.615A2.993 2.993 0 009.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 002.25 1.016c.896 0 1.7-.393 2.25-1.016A3.001 3.001 0 0020.25 9.35m-16.5 0c0-.655.21-1.262.563-1.757L6.06 4.418A2.25 2.25 0 018.153 3.5h7.694a2.25 2.25 0 012.093.918l1.747 3.175c.353.495.563 1.102.563 1.757" />
-                </svg>
-              </div>
-              <h3 className="font-[family-name:var(--font-playfair)] text-2xl font-bold text-warm-brown-dark">
-                In-Store Prices
-              </h3>
-            </div>
-            <div className="space-y-4">
-              <div className="flex items-center justify-between p-4 bg-cream rounded-xl">
-                <span className="text-warm-brown font-medium">30 Minutes</span>
-                <span className="text-xl font-bold text-gold-dark">$55</span>
-              </div>
-              <div className="flex items-center justify-between p-4 bg-cream rounded-xl">
-                <span className="text-warm-brown font-medium">1 Hour</span>
-                <span className="text-xl font-bold text-gold-dark">$100</span>
-              </div>
-              <p className="text-sm italic text-warm-brown-light mt-4">
-                *Services provided at Nail Brothers location.
               </p>
             </div>
           </div>
@@ -136,9 +111,6 @@ export default function MassageRecovery() {
                 Booking
               </p>
               <p className="text-sm text-warm-brown mt-1">
-                Nail Brothers: <a href="tel:+16784047184" className="text-gold-dark hover:text-warm-brown-dark transition-colors">(678) 404-7184</a>
-              </p>
-              <p className="text-sm text-warm-brown mt-1">
                 Ali (direct): <a href="tel:+14703993351" className="text-gold-dark hover:text-warm-brown-dark transition-colors">(470) 399-3351</a>
               </p>
             </div>
@@ -171,14 +143,14 @@ export default function MassageRecovery() {
           <ul className="check-list space-y-3 text-warm-brown">
             <li>Must call ahead before coming</li>
             <li>Walk-ins not guaranteed</li>
-            <li>In-studio services provided at Nail Brothers location</li>
+            <li>Services are by appointment; based in Stone Mountain — address shared after booking</li>
             <li>Mobile massage &amp; recovery available upon request</li>
             <li>Mobile pricing may vary based on travel distance</li>
           </ul>
         </div>
 
         <div className="text-center text-warm-brown-light text-sm italic">
-          Massage services provided on-site at Nail Brothers. Mobile services also available.
+          Based in Stone Mountain. By appointment Monday through Sunday. Mobile services also available.
         </div>
       </div>
     </section>
