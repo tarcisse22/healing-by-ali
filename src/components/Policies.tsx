@@ -1,128 +1,114 @@
-export default function Policies() {
+import { type ContactInfo } from "@/lib/defaults";
+import { SectionHeading } from "./ui";
+
+interface PoliciesProps {
+  contact?: ContactInfo;
+}
+
+export default function Policies({ contact }: PoliciesProps) {
+  const phone = contact?.phone || "(470) 399-3351";
+  const phoneDigits = phone.replace(/\D/g, "");
+  const cashapp = contact?.cashapp || "$healingbyali";
+  const zelle = phoneDigits.length === 10
+    ? `${phoneDigits.slice(0, 3)}-${phoneDigits.slice(3, 6)}-${phoneDigits.slice(6)}`
+    : phone;
+
   return (
-    <section id="policies" className="py-24 bg-cream">
+    <section id="policies" className="py-28 bg-sand">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="text-center space-y-4 mb-16">
-          <p className="text-gold-dark font-semibold tracking-widest uppercase text-sm">
-            Important Information
-          </p>
-          <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold text-warm-brown-dark">
-            Booking &amp; Service Policies
-          </h2>
-          <p className="text-warm-brown max-w-2xl mx-auto text-lg">
-            Please review our policies before booking. Communication is key
-            &mdash; if anything comes up, just give us a call.
-          </p>
-        </div>
+        <SectionHeading
+          eyebrow="Before You Book"
+          title="Booking & service policies"
+          intro={
+            <>
+              Please review our policies before booking. Communication is key
+              &mdash; if anything comes up, just give us a call.
+            </>
+          }
+        />
 
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
-          {/* General Policies */}
-          <div className="bg-off-white rounded-2xl p-8 shadow-md">
-            <h3 className="font-[family-name:var(--font-playfair)] text-xl font-bold text-warm-brown-dark mb-4">
-              General Policies
-            </h3>
-            <ul className="check-list space-y-3 text-warm-brown">
+        <div className="grid md:grid-cols-2 gap-6">
+          {/* General */}
+          <div className="bg-ivory rounded-3xl p-8 lg:p-10">
+            <PolicyTitle number="01" title="General Policies" />
+            <ul className="check-list space-y-3 text-stone">
               <li>All sales are final</li>
+              <li>A deposit (50% of service total) is required before booking</li>
               <li>
-                A deposit (50% of service total) is required before booking
+                Your first appointment does not require a deposit &mdash;
+                deposits are required for all sessions after your first visit
               </li>
               <li>
-                Your first appointment does not require a deposit &mdash; deposits
-                are required for all sessions after your first visit
+                Deposits can be sent via Cash App ({cashapp}) or Zelle ({zelle})
               </li>
-              <li>
-                Deposits can be sent via Cash App ($healingbyali) or Zelle
-                (470-399-3351)
-              </li>
-              <li>
-                Communication is key &mdash; please call if anything comes up
-              </li>
+              <li>Communication is key &mdash; please call if anything comes up</li>
             </ul>
           </div>
 
-          {/* Time Policy */}
-          <div className="bg-off-white rounded-2xl p-8 shadow-md">
-            <h3 className="font-[family-name:var(--font-playfair)] text-xl font-bold text-warm-brown-dark mb-4">
-              Time Policy
-            </h3>
-            <ul className="space-y-3 text-warm-brown">
-              <li className="flex items-start gap-2">
-                <span className="text-gold-dark mt-1 flex-shrink-0">
-                  &bull;
-                </span>
-                <span>You have up to a 10-minute grace period</span>
+          {/* Time */}
+          <div className="bg-ivory rounded-3xl p-8 lg:p-10">
+            <PolicyTitle number="02" title="Time Policy" />
+            <ul className="check-list space-y-3 text-stone">
+              <li>You have up to a 10-minute grace period</li>
+              <li>
+                After 15 minutes late for <strong className="text-forest font-medium">massage</strong>:
+                your spot may be given to another client
               </li>
-              <li className="flex items-start gap-2">
-                <span className="text-gold-dark mt-1 flex-shrink-0">
-                  &bull;
-                </span>
-                <span>
-                  After 15 minutes late for <strong>massage</strong>: your spot
-                  may be given to another client
-                </span>
+              <li>
+                After 15 minutes late for <strong className="text-forest font-medium">training</strong>:
+                your time is still reserved, but your session is shortened
               </li>
-              <li className="flex items-start gap-2">
-                <span className="text-gold-dark mt-1 flex-shrink-0">
-                  &bull;
-                </span>
-                <span>
-                  After 15 minutes late for <strong>training</strong>: your time
-                  is still reserved, but your session is shortened
-                </span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-gold-dark mt-1 flex-shrink-0">
-                  &bull;
-                </span>
-                <span>
-                  Example: If your session is 9:00&ndash;10:00 and you arrive at
-                  9:30, you only get the remaining 30 minutes
-                </span>
+              <li>
+                Example: If your session is 9:00&ndash;10:00 and you arrive at
+                9:30, you only get the remaining 30 minutes
               </li>
             </ul>
-            <div className="mt-6 p-4 bg-gold-light/30 rounded-xl">
-              <p className="text-sm font-semibold text-warm-brown-dark italic">
-                &ldquo;The time you book is the time reserved and paid
-                for.&rdquo;
-              </p>
-            </div>
+            <p className="mt-6 font-display text-xl italic text-clay-dark">
+              &ldquo;The time you book is the time reserved and paid for.&rdquo;
+            </p>
           </div>
 
-          {/* Rescheduling Policy */}
-          <div className="bg-off-white rounded-2xl p-8 shadow-md">
-            <h3 className="font-[family-name:var(--font-playfair)] text-xl font-bold text-warm-brown-dark mb-4">
-              Rescheduling Policy
-            </h3>
-            <ul className="check-list space-y-3 text-warm-brown">
-              <li>
-                Rescheduling must be done at least 48 hours in advance
-              </li>
+          {/* Rescheduling */}
+          <div className="bg-ivory rounded-3xl p-8 lg:p-10">
+            <PolicyTitle number="03" title="Rescheduling Policy" />
+            <ul className="check-list space-y-3 text-stone">
+              <li>Rescheduling must be done at least 48 hours in advance</li>
               <li>
                 Please call{" "}
                 <a
-                  href="tel:+14703993351"
-                  className="text-gold-dark hover:text-warm-brown-dark transition-colors font-semibold"
+                  href={`tel:+1${phoneDigits}`}
+                  className="text-clay-dark font-medium underline underline-offset-4 decoration-clay/40 hover:decoration-clay"
                 >
-                  (470) 399-3351
+                  {phone}
                 </a>{" "}
                 to reschedule
               </li>
             </ul>
           </div>
 
-          {/* Cancellation / No Show */}
-          <div className="bg-off-white rounded-2xl p-8 shadow-md">
-            <h3 className="font-[family-name:var(--font-playfair)] text-xl font-bold text-warm-brown-dark mb-4">
-              Cancellation / No Show
-            </h3>
-            <ul className="check-list space-y-3 text-warm-brown">
+          {/* Cancellation */}
+          <div className="bg-ivory rounded-3xl p-8 lg:p-10">
+            <PolicyTitle number="04" title="Cancellation / No Show" />
+            <ul className="check-list space-y-3 text-stone">
               <li>Deposits are non-refundable</li>
               <li>Missed time is your responsibility</li>
               <li>No-shows forfeit their deposit</li>
             </ul>
           </div>
         </div>
+
       </div>
     </section>
+  );
+}
+
+function PolicyTitle({ number, title }: { number: string; title: string }) {
+  return (
+    <div className="flex items-baseline gap-4 mb-6 pb-4 border-b border-sand-dark">
+      <span className="font-display text-lg text-clay">{number}</span>
+      <h3 className="font-display text-2xl md:text-3xl font-medium text-forest">
+        {title}
+      </h3>
+    </div>
   );
 }

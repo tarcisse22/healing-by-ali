@@ -1,6 +1,20 @@
 @import "tailwindcss";
 
 @theme inline {
+  /* Public site palette */
+  --color-ivory: #f8f4ee;
+  --color-sand: #efe6d8;
+  --color-sand-dark: #e2d5c1;
+  --color-clay: #b4785a;
+  --color-clay-dark: #94593e;
+  --color-forest: #26332b;
+  --color-forest-light: #3a4a3f;
+  --color-moss: #8a9a7e;
+  --color-moss-light: #c9d2bf;
+  --color-ink: #2b2724;
+  --color-stone: #6e655c;
+
+  /* Legacy palette (used by the admin dashboard) */
   --color-cream: #f5f0e8;
   --color-cream-light: #faf7f2;
   --color-cream-dark: #e8e0d0;
@@ -14,36 +28,53 @@
   --color-sage-light: #a8b898;
   --color-charcoal: #3a3a3a;
   --color-off-white: #fdfcfa;
+
+  --font-display: var(--font-cormorant), Georgia, serif;
+  --font-sans: var(--font-jost), system-ui, sans-serif;
   --font-heading: "Playfair Display", Georgia, serif;
-  --font-body: var(--font-geist-sans), system-ui, sans-serif;
+  --font-body: var(--font-jost), system-ui, sans-serif;
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
 }
 
 body {
-  background: var(--color-off-white);
-  color: var(--color-charcoal);
+  background: var(--color-ivory);
+  color: var(--color-ink);
   font-family: var(--font-body);
 }
 
-/* Decorative wave divider */
-.wave-divider {
-  position: relative;
-  overflow: hidden;
+/* Small uppercase label above section titles */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-clay-dark);
 }
 
-.wave-divider::after {
+.eyebrow::before {
   content: "";
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 100%;
-  height: 60px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 60'%3E%3Cpath fill='%23f5f0e8' d='M0,30 C360,60 720,0 1080,30 C1260,45 1350,30 1440,30 L1440,60 L0,60 Z'/%3E%3C/svg%3E")
-    no-repeat center;
-  background-size: cover;
+  width: 2rem;
+  height: 1px;
+  background: currentColor;
+}
+
+/* Arch-shaped frame, common on spa & wellness sites */
+.arch {
+  border-radius: 999px 999px 1.5rem 1.5rem;
+}
+
+/* Dotted leader between a menu item and its price */
+.leader {
+  flex: 1;
+  border-bottom: 1px dotted color-mix(in srgb, var(--color-stone) 50%, transparent);
+  margin: 0 0.75rem 0.4rem;
 }
 
 /* Checkmark list styling */
@@ -53,9 +84,17 @@ body {
 }
 
 .check-list li::before {
-  content: "\2713";
+  content: "";
   position: absolute;
   left: 0;
-  color: var(--color-gold-dark);
-  font-weight: bold;
+  top: 0.55em;
+  width: 0.85rem;
+  height: 0.45rem;
+  border-left: 1.5px solid var(--color-clay);
+  border-bottom: 1.5px solid var(--color-clay);
+  transform: rotate(-45deg) translateY(-50%);
+}
+
+.check-list.on-dark li::before {
+  border-color: var(--color-moss-light);
 }
