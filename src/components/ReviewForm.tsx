@@ -40,20 +40,28 @@ export default function ReviewForm() {
     setSubmitting(false);
   }
 
+  const fieldClass =
+    "w-full px-4 py-3 rounded-xl border border-sand-dark bg-ivory text-ink placeholder:text-stone/60 focus:outline-none focus:ring-2 focus:ring-clay/50 focus:border-clay";
+
   return (
-    <div className="bg-cream rounded-2xl p-8 shadow-md max-w-2xl mx-auto">
-      <h3 className="font-[family-name:var(--font-playfair)] text-2xl font-bold text-warm-brown-dark text-center mb-2">
-        Leave a Review
-      </h3>
-      <p className="text-warm-brown text-center text-sm mb-6">
-        Had a session with Ali? Share your experience below.
-      </p>
+    <div className="bg-sand text-ink rounded-3xl p-8 md:p-12 max-w-3xl mx-auto">
+      <div className="text-center mb-8">
+        <p className="text-xs tracking-[0.25em] uppercase text-clay-dark mb-3">
+          Share Your Experience
+        </p>
+        <h3 className="font-display text-3xl md:text-4xl font-medium text-forest">
+          Leave a review
+        </h3>
+        <p className="text-stone mt-2">
+          Had a session with Ali? Share your experience below.
+        </p>
+      </div>
 
       {message && (
         <div
-          className={`mb-6 p-4 rounded-lg text-sm font-semibold text-center ${
+          className={`mb-6 p-4 rounded-xl text-sm font-medium text-center ${
             success
-              ? "bg-green-100 text-green-800"
+              ? "bg-moss-light/60 text-forest"
               : "bg-red-100 text-red-800"
           }`}
         >
@@ -61,31 +69,33 @@ export default function ReviewForm() {
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div className="grid md:grid-cols-2 gap-4">
+      <form onSubmit={handleSubmit} className="space-y-5">
+        <div className="grid md:grid-cols-2 gap-5">
           <div>
-            <label className="block text-sm font-semibold text-warm-brown-dark mb-1">
+            <label htmlFor="review-name" className="block text-sm font-medium text-forest mb-1.5">
               Your Name
             </label>
             <input
+              id="review-name"
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="e.g. Marcus J."
               required
               maxLength={100}
-              className="w-full px-4 py-2.5 rounded-lg border border-warm-brown/20 bg-off-white text-warm-brown-dark focus:outline-none focus:ring-2 focus:ring-gold"
+              className={fieldClass}
             />
           </div>
           <div>
-            <label className="block text-sm font-semibold text-warm-brown-dark mb-1">
+            <label htmlFor="review-service" className="block text-sm font-medium text-forest mb-1.5">
               Service Used
             </label>
             <select
+              id="review-service"
               value={service}
               onChange={(e) => setService(e.target.value)}
               required
-              className="w-full px-4 py-2.5 rounded-lg border border-warm-brown/20 bg-off-white text-warm-brown-dark focus:outline-none focus:ring-2 focus:ring-gold"
+              className={fieldClass}
             >
               <option value="">Select a service</option>
               <option value="Personal Training">Personal Training</option>
@@ -97,20 +107,19 @@ export default function ReviewForm() {
         </div>
 
         <div>
-          <label className="block text-sm font-semibold text-warm-brown-dark mb-1">
-            Rating
-          </label>
+          <p className="block text-sm font-medium text-forest mb-1.5">Rating</p>
           <div className="flex gap-1">
             {[1, 2, 3, 4, 5].map((n) => (
               <button
                 key={n}
                 type="button"
                 onClick={() => setStars(n)}
-                className="focus:outline-none"
+                aria-label={`${n} star${n > 1 ? "s" : ""}`}
+                className="focus:outline-none focus-visible:ring-2 focus-visible:ring-clay rounded"
               >
                 <svg
                   className={`w-8 h-8 transition-colors ${
-                    n <= stars ? "text-gold" : "text-warm-brown/20"
+                    n <= stars ? "text-clay" : "text-sand-dark"
                   }`}
                   fill="currentColor"
                   viewBox="0 0 24 24"
@@ -123,24 +132,25 @@ export default function ReviewForm() {
         </div>
 
         <div>
-          <label className="block text-sm font-semibold text-warm-brown-dark mb-1">
+          <label htmlFor="review-quote" className="block text-sm font-medium text-forest mb-1.5">
             Your Review
           </label>
           <textarea
+            id="review-quote"
             value={quote}
             onChange={(e) => setQuote(e.target.value)}
             placeholder="Tell us about your experience..."
             required
             maxLength={1000}
             rows={4}
-            className="w-full px-4 py-2.5 rounded-lg border border-warm-brown/20 bg-off-white text-warm-brown-dark focus:outline-none focus:ring-2 focus:ring-gold resize-y"
+            className={`${fieldClass} resize-y`}
           />
         </div>
 
         <button
           type="submit"
           disabled={submitting}
-          className="w-full rounded-full bg-warm-brown-dark px-8 py-3 text-sm font-semibold text-cream-light hover:bg-warm-brown transition-colors disabled:opacity-50"
+          className="w-full rounded-full bg-forest px-8 py-4 text-sm font-medium tracking-wide text-ivory hover:bg-forest-light transition-colors disabled:opacity-50"
         >
           {submitting ? "Submitting..." : "Submit Review"}
         </button>

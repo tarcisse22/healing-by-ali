@@ -1,3 +1,9 @@
+import { Icon, SectionHeading } from "./ui";
+
+interface MassageRecoveryProps {
+  phone?: string;
+}
+
 const treatments = [
   "Therapeutic massage",
   "Cupping therapy",
@@ -7,6 +13,11 @@ const treatments = [
   "Hot Stone massage",
   "Tuning forks",
   "Sound therapy",
+];
+
+const pricing = [
+  { duration: "30 Minutes", price: "$35" },
+  { duration: "1 Hour", price: "$75" },
 ];
 
 const massageBenefits = [
@@ -24,133 +35,148 @@ const perfectFor = [
   "General wellness and self-care",
 ];
 
-export default function MassageRecovery() {
-  return (
-    <section id="massage" className="py-24 bg-off-white">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="text-center space-y-4 mb-16">
-          <p className="text-gold-dark font-semibold tracking-widest uppercase text-sm">
-            Therapeutic Bodywork &amp; Recovery
-          </p>
-          <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold text-warm-brown-dark">
-            Therapeutic Massage &amp; Recovery
-          </h2>
-          <p className="text-warm-brown max-w-2xl mx-auto text-lg">
-            Professional massage services designed to relieve tension, reduce
-            pain, and support overall body recovery.
-          </p>
-        </div>
+const guidelines = [
+  "Must call ahead before coming",
+  "Walk-ins not guaranteed",
+  "Services are by appointment; based in Stone Mountain — address shared after booking",
+  "Mobile massage & recovery available upon request",
+  "Mobile pricing may vary based on travel distance",
+];
 
-        {/* Massage Pricing */}
-        <div className="max-w-md mx-auto mb-16">
-          {/* Mobile Services */}
-          <div className="bg-off-white rounded-2xl p-8 shadow-lg shadow-warm-brown/5">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-xl bg-gold/20 flex items-center justify-center text-gold-dark">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.125-.504 1.125-1.125v-3.637c0-.247-.084-.49-.236-.693l-1.842-2.456A2.25 2.25 0 0016.5 9H5.25a2.25 2.25 0 00-2.25 2.25v5.625m16.5-4.875h-3.375a1.125 1.125 0 01-1.125-1.125V9m4.5 0v-1.5a2.25 2.25 0 00-2.25-2.25H5.25a2.25 2.25 0 00-2.25 2.25v1.5" />
-                </svg>
+export default function MassageRecovery({
+  phone = "(470) 399-3351",
+}: MassageRecoveryProps) {
+  const phoneDigits = phone.replace(/\D/g, "");
+
+  return (
+    <section id="massage" className="py-28 bg-ivory">
+      <div className="mx-auto max-w-7xl px-6">
+        <SectionHeading
+          eyebrow="Therapeutic Bodywork & Recovery"
+          title="Massage & recovery"
+          intro="Professional massage services designed to relieve tension, reduce pain, and support overall body recovery."
+        />
+
+        <div className="grid lg:grid-cols-2 gap-6">
+          {/* Treatment menu */}
+          <div className="rounded-3xl bg-forest text-ivory p-8 lg:p-12 relative overflow-hidden">
+            <div
+              className="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-clay/20 blur-3xl pointer-events-none"
+              aria-hidden="true"
+            />
+            <div className="relative">
+              <div className="flex items-center gap-3 mb-2">
+                <Icon name="car" className="w-5 h-5 text-clay" />
+                <p className="text-xs tracking-[0.25em] uppercase text-moss-light">
+                  Mobile Services
+                </p>
               </div>
-              <h3 className="font-[family-name:var(--font-playfair)] text-2xl font-bold text-warm-brown-dark">
-                Mobile Services
+              <h3 className="font-display text-4xl font-medium mb-10">
+                Massage menu
               </h3>
-            </div>
-            <div className="space-y-4">
-              <div className="flex items-center justify-between p-4 bg-cream rounded-xl">
-                <span className="text-warm-brown font-medium">30 Minutes</span>
-                <span className="text-xl font-bold text-gold-dark">$35</span>
-              </div>
-              <div className="flex items-center justify-between p-4 bg-cream rounded-xl">
-                <span className="text-warm-brown font-medium">1 Hour</span>
-                <span className="text-xl font-bold text-gold-dark">$75</span>
-              </div>
-              <p className="text-sm italic text-warm-brown-light mt-4">
+              <ul className="space-y-6">
+                {pricing.map((p) => (
+                  <li key={p.duration} className="flex items-end">
+                    <span className="font-display text-2xl">
+                      Therapeutic Massage
+                      <span className="block text-sm font-sans text-ivory/60 mt-1">
+                        {p.duration}
+                      </span>
+                    </span>
+                    <span className="leader !border-ivory/30" />
+                    <span className="font-display text-3xl text-clay">
+                      {p.price}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-8 text-sm italic text-ivory/60">
                 *Driving fee applies based on distance.
               </p>
+              <a
+                href={`tel:+1${phoneDigits}`}
+                className="mt-10 inline-flex items-center gap-2 rounded-full bg-ivory text-forest px-7 py-3.5 text-sm font-medium tracking-wide hover:bg-sand transition-colors"
+              >
+                <Icon name="phone" className="w-4 h-4" />
+                Book with Ali: {phone}
+              </a>
             </div>
           </div>
-        </div>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
-          {/* Available Treatments */}
-          <div className="bg-cream rounded-2xl p-8 shadow-md">
-            <h3 className="font-[family-name:var(--font-playfair)] text-xl font-bold text-warm-brown-dark mb-6">
-              Available Treatments
+          {/* Treatments */}
+          <div className="rounded-3xl bg-sand p-8 lg:p-12">
+            <p className="text-xs tracking-[0.25em] uppercase text-clay-dark mb-2">
+              What&apos;s offered
+            </p>
+            <h3 className="font-display text-4xl font-medium text-forest mb-8">
+              Available treatments
             </h3>
-            <ul className="check-list space-y-3 text-warm-brown">
+            <ul className="grid sm:grid-cols-2 gap-3">
               {treatments.map((t) => (
-                <li key={t}>{t}</li>
+                <li
+                  key={t}
+                  className="flex items-center gap-3 bg-ivory rounded-2xl px-5 py-4 text-forest"
+                >
+                  <Icon name="leaf" className="w-4 h-4 text-clay flex-shrink-0" />
+                  {t}
+                </li>
               ))}
             </ul>
           </div>
+        </div>
 
-          {/* Benefits */}
-          <div className="bg-cream rounded-2xl p-8 shadow-md">
-            <h3 className="font-[family-name:var(--font-playfair)] text-xl font-bold text-warm-brown-dark mb-6">
+        {/* Benefits / Perfect for / Guidelines */}
+        <div className="mt-20 grid md:grid-cols-3 gap-12">
+          <div>
+            <h3 className="font-display text-2xl font-medium text-forest mb-6 pb-4 border-b border-sand-dark">
               Benefits of Massage Therapy
             </h3>
-            <ul className="check-list space-y-3 text-warm-brown">
+            <ul className="check-list space-y-3 text-stone">
               {massageBenefits.map((b) => (
                 <li key={b}>{b}</li>
               ))}
             </ul>
           </div>
-
-          {/* Perfect For */}
-          <div className="bg-cream rounded-2xl p-8 shadow-md">
-            <h3 className="font-[family-name:var(--font-playfair)] text-xl font-bold text-warm-brown-dark mb-6">
+          <div>
+            <h3 className="font-display text-2xl font-medium text-forest mb-6 pb-4 border-b border-sand-dark">
               Perfect For
             </h3>
-            <ul className="check-list space-y-3 text-warm-brown">
+            <ul className="check-list space-y-3 text-stone">
               {perfectFor.map((p) => (
                 <li key={p}>{p}</li>
               ))}
             </ul>
-            <div className="mt-8 p-4 bg-gold-light/30 rounded-xl">
-              <p className="text-sm font-semibold text-warm-brown-dark">
-                Booking
-              </p>
-              <p className="text-sm text-warm-brown mt-1">
-                Ali (direct): <a href="tel:+14703993351" className="text-gold-dark hover:text-warm-brown-dark transition-colors">(470) 399-3351</a>
-              </p>
-            </div>
           </div>
-        </div>
-
-        {/* Appointment Notice */}
-        <div className="bg-gold-light/30 rounded-2xl p-8 mb-12 text-center">
-          <div className="flex items-center justify-center gap-3 mb-3">
-            <svg className="w-6 h-6 text-gold-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            <h3 className="font-[family-name:var(--font-playfair)] text-xl font-bold text-warm-brown-dark">
-              Appointment Required
+          <div>
+            <h3 className="font-display text-2xl font-medium text-forest mb-6 pb-4 border-b border-sand-dark">
+              Massage Guidelines
             </h3>
+            <ul className="check-list space-y-3 text-stone">
+              {guidelines.map((g) => (
+                <li key={g}>{g}</li>
+              ))}
+            </ul>
           </div>
-          <p className="text-warm-brown">
-            Please call before coming. All massage sessions must be scheduled in advance before arrival.
-          </p>
-          <p className="text-warm-brown text-sm mt-2">
-            Walk-ins are not guaranteed.
-          </p>
         </div>
 
-        {/* Massage-Specific Rules */}
-        <div className="bg-cream rounded-2xl p-8 shadow-md mb-12">
-          <h3 className="font-[family-name:var(--font-playfair)] text-xl font-bold text-warm-brown-dark mb-4">
-            Massage Guidelines
-          </h3>
-          <ul className="check-list space-y-3 text-warm-brown">
-            <li>Must call ahead before coming</li>
-            <li>Walk-ins not guaranteed</li>
-            <li>Services are by appointment; based in Stone Mountain — address shared after booking</li>
-            <li>Mobile massage &amp; recovery available upon request</li>
-            <li>Mobile pricing may vary based on travel distance</li>
-          </ul>
-        </div>
-
-        <div className="text-center text-warm-brown-light text-sm italic">
-          Based in Stone Mountain. By appointment Monday through Sunday. Mobile services also available.
+        {/* Appointment notice */}
+        <div className="mt-16 rounded-3xl border border-sand-dark p-8 flex flex-col md:flex-row md:items-center gap-6">
+          <span className="w-12 h-12 rounded-full bg-clay/15 text-clay-dark flex items-center justify-center flex-shrink-0">
+            <Icon name="clock" className="w-6 h-6" />
+          </span>
+          <div className="flex-1">
+            <p className="font-display text-2xl text-forest font-medium">
+              Appointment required
+            </p>
+            <p className="text-stone mt-1">
+              Please call before coming. All massage sessions must be scheduled
+              in advance before arrival. Walk-ins are not guaranteed.
+            </p>
+          </div>
+          <p className="text-sm italic text-stone md:max-w-xs md:text-right">
+            Based in Stone Mountain. By appointment Monday through Sunday.
+            Mobile services also available.
+          </p>
         </div>
       </div>
     </section>

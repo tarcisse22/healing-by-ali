@@ -18,19 +18,19 @@ export default async function Home() {
 
   return (
     <>
-      <Header />
+      <Header phone={content.contact.phone} />
       <main>
-        <Hero />
+        <Hero contact={content.contact} />
         <About />
-        <Services services={content.services} />
-        <MassageRecovery />
-        <Policies />
+        <Services services={content.services} phone={content.contact.phone} />
+        <MassageRecovery phone={content.contact.phone} />
         <Testimonials testimonials={content.testimonials} />
+        <Policies contact={content.contact} />
         <FAQ />
         <Location hours={content.hours} contact={content.contact} />
         <Contact contact={content.contact} />
       </main>
-      <Footer />
+      <Footer contact={content.contact} />
     </>
   );
 }

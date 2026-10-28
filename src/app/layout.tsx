@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
-import { Playfair_Display } from "next/font/google";
+import { Cormorant_Garamond, Jost, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+});
+
+const jost = Jost({
+  variable: "--font-jost",
   subsets: ["latin"],
 });
 
@@ -45,7 +51,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${playfair.variable} h-full antialiased`}
+      className={`${cormorant.variable} ${jost.variable} ${playfair.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

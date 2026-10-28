@@ -1,111 +1,149 @@
-export default function Hero() {
+import { type ContactInfo } from "@/lib/defaults";
+import { Icon } from "./ui";
+
+interface HeroProps {
+  contact?: ContactInfo;
+}
+
+const offerings = [
+  { label: "Personal Training", icon: "spark" as const },
+  { label: "Recovery & Mobility", icon: "leaf" as const },
+  { label: "Therapeutic Massage", icon: "hand" as const },
+];
+
+export default function Hero({ contact }: HeroProps) {
+  const phone = contact?.phone || "(470) 399-3351";
+  const phoneDigits = phone.replace(/\D/g, "");
+  const instagram = contact?.instagram || "@healingbyali_coach";
+  const instagramUrl =
+    contact?.instagram_url || "https://instagram.com/healingbyali_coach";
+
   return (
-    <section className="relative min-h-screen flex items-center bg-gradient-to-br from-cream-light via-cream to-cream-dark pt-20">
-      {/* Decorative background shapes */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-20 -right-20 w-96 h-96 rounded-full bg-gold-light/20 blur-3xl" />
-        <div className="absolute bottom-20 -left-20 w-80 h-80 rounded-full bg-sage-light/20 blur-3xl" />
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-forest text-ivory">
+      {/* Soft background glow + botanical line art */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div className="absolute -top-40 -right-40 w-[40rem] h-[40rem] rounded-full bg-clay/25 blur-[120px]" />
+        <div className="absolute -bottom-40 -left-40 w-[36rem] h-[36rem] rounded-full bg-moss/25 blur-[120px]" />
+        <svg
+          className="absolute -left-24 bottom-0 w-[28rem] h-[28rem] text-ivory/[0.06]"
+          viewBox="0 0 200 200"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="0.8"
+        >
+          <path d="M20 190C60 140 90 90 110 20" />
+          <path d="M45 160c-20-10-30-30-28-52 20 6 30 26 28 52z" />
+          <path d="M62 132c22-6 34-24 34-46-22 4-34 22-34 46z" />
+          <path d="M78 104c-18-12-24-32-20-52 18 10 26 30 20 52z" />
+          <path d="M94 76c20-8 30-26 28-46-20 6-30 24-28 46z" />
+        </svg>
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-6 py-20 grid md:grid-cols-2 gap-12 items-center">
-        <div className="space-y-8">
-          <div className="space-y-4">
-            <p className="text-gold-dark font-semibold tracking-widest uppercase text-sm">
-              Strength & Conditioning Specialist
-            </p>
-            <h1 className="font-[family-name:var(--font-playfair)] text-5xl md:text-6xl lg:text-7xl font-bold text-warm-brown-dark leading-tight">
-              Move Better.
-              <br />
-              Feel Better.
-              <br />
-              <span className="text-gold-dark">Perform Better.</span>
-            </h1>
-          </div>
-          <p className="text-lg text-warm-brown leading-relaxed max-w-lg">
+      <div className="relative mx-auto max-w-7xl w-full px-6 pt-36 pb-24 grid lg:grid-cols-[1.15fr_0.85fr] gap-16 items-center">
+        <div className="space-y-9">
+          <p className="eyebrow !text-moss-light">
+            Strength &amp; Conditioning Specialist
+          </p>
+          <h1 className="font-display text-5xl sm:text-6xl lg:text-[5.25rem] leading-[1.02] font-medium">
+            Move better.
+            <br />
+            Feel better.
+            <br />
+            <em className="text-clay font-normal">Perform better.</em>
+          </h1>
+          <p className="text-lg text-ivory/75 leading-relaxed max-w-xl">
             Professional training sessions designed to help improve strength,
-            flexibility, mobility, and overall physical performance. Paired with
-            recovery treatments to relieve pain, soreness, and tightness.
+            flexibility, mobility, and overall physical performance &mdash;
+            paired with recovery treatments to relieve pain, soreness, and
+            tightness.
           </p>
           <div className="flex flex-wrap gap-4">
             <a
+              href="#location"
+              className="inline-flex items-center gap-2 rounded-full bg-clay px-8 py-4 text-sm font-medium tracking-wide text-ivory hover:bg-clay-dark transition-colors"
+            >
+              Book Your Session
+              <Icon name="arrow" className="w-4 h-4" />
+            </a>
+            <a
               href="#services"
-              className="rounded-full bg-warm-brown-dark px-8 py-3.5 text-base font-semibold text-cream-light hover:bg-warm-brown transition-colors shadow-lg shadow-warm-brown-dark/20"
+              className="rounded-full border border-ivory/40 px-8 py-4 text-sm font-medium tracking-wide text-ivory hover:bg-ivory hover:text-forest transition-colors"
             >
               View Services
             </a>
-            <a
-              href="#contact"
-              className="rounded-full border-2 border-warm-brown-dark px-8 py-3.5 text-base font-semibold text-warm-brown-dark hover:bg-warm-brown-dark hover:text-cream-light transition-colors"
-            >
-              Get in Touch
-            </a>
           </div>
-          <div className="flex items-center gap-2 text-warm-brown-light">
-            <svg
-              className="w-5 h-5"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-            </svg>
+
+          <div className="flex flex-wrap gap-x-8 gap-y-3 pt-4 text-sm text-ivory/70">
             <a
-              href="https://instagram.com/healingbyali_coach"
+              href={`tel:+1${phoneDigits}`}
+              className="flex items-center gap-2 hover:text-ivory transition-colors"
+            >
+              <Icon name="phone" className="w-4 h-4" />
+              {phone}
+            </a>
+            <a
+              href={instagramUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-medium hover:text-warm-brown-dark transition-colors"
+              className="flex items-center gap-2 hover:text-ivory transition-colors"
             >
-              @healingbyali_coach
+              <Icon name="instagram" className="w-4 h-4" />
+              {instagram}
             </a>
+            <span className="flex items-center gap-2">
+              <Icon name="pin" className="w-4 h-4" />
+              Stone Mountain, GA &amp; mobile
+            </span>
           </div>
         </div>
 
-        {/* Right side: decorative card */}
-        <div className="hidden md:flex justify-center">
-          <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-br from-gold-light/40 to-sage-light/40 rounded-3xl rotate-3 scale-105" />
-            <div className="relative bg-cream-light rounded-3xl p-10 shadow-2xl shadow-warm-brown/10 space-y-6 max-w-sm">
-              <div className="w-16 h-16 rounded-full bg-gold/20 flex items-center justify-center">
-                <svg
-                  className="w-8 h-8 text-gold-dark"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 18a3.75 3.75 0 00.495-7.467 5.99 5.99 0 00-1.925 3.546 5.974 5.974 0 01-2.133-1A3.75 3.75 0 0012 18z"
-                  />
-                </svg>
+        {/* Arch card */}
+        <div className="hidden lg:flex justify-center">
+          <div className="relative w-full max-w-sm">
+            <div className="absolute inset-0 arch border border-ivory/20 translate-x-5 translate-y-5" />
+            <div className="relative arch bg-gradient-to-b from-sand to-ivory text-ink px-10 pt-24 pb-12 shadow-2xl shadow-black/30">
+              <div className="mx-auto w-20 h-20 rounded-full bg-forest text-ivory flex items-center justify-center mb-8">
+                <Icon name="leaf" className="w-9 h-9" />
               </div>
-              <h3 className="font-[family-name:var(--font-playfair)] text-2xl font-bold text-warm-brown-dark">
+              <p className="text-center font-display text-3xl text-forest font-medium">
                 Healing by Ali
-              </h3>
-              <p className="text-warm-brown leading-relaxed">
+              </p>
+              <p className="text-center text-stone mt-3 leading-relaxed">
                 Helping your body move, recover, and perform better.
               </p>
-              <div className="space-y-3 text-sm text-warm-brown-light">
-                <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-sage" />
-                  Personal Training
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-gold" />
-                  Recovery & Mobility
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-warm-brown-light" />
-                  Therapeutic Massage
-                </div>
-              </div>
+              <ul className="mt-10 space-y-4">
+                {offerings.map((o) => (
+                  <li
+                    key={o.label}
+                    className="flex items-center gap-4 border-t border-sand-dark pt-4"
+                  >
+                    <span className="w-9 h-9 rounded-full bg-clay/15 text-clay-dark flex items-center justify-center">
+                      <Icon name={o.icon} className="w-4.5 h-4.5" />
+                    </span>
+                    <span className="text-forest font-medium">{o.label}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Highlights strip */}
+      <div className="absolute bottom-0 left-0 right-0 border-t border-ivory/10 bg-forest/60 backdrop-blur-sm hidden md:block">
+        <div className="mx-auto max-w-7xl px-6 py-5 grid grid-cols-3 gap-6 text-sm text-ivory/80">
+          <p className="flex items-center gap-3">
+            <Icon name="phone" className="w-4 h-4 text-clay" />
+            Free 10-minute phone consultation
+          </p>
+          <p className="flex items-center gap-3 justify-center">
+            <Icon name="calendar" className="w-4 h-4 text-clay" />
+            No deposit for your first visit
+          </p>
+          <p className="flex items-center gap-3 justify-end">
+            <Icon name="car" className="w-4 h-4 text-clay" />
+            Mobile sessions available
+          </p>
         </div>
       </div>
     </section>

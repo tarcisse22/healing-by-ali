@@ -1,9 +1,20 @@
 import { type ContactInfo } from "@/lib/defaults";
+import { Icon, SectionHeading } from "./ui";
 
 interface LocationProps {
   hours?: Record<string, string>;
   contact?: ContactInfo;
 }
+
+const dayOrder = [
+  "monday",
+  "tuesday",
+  "wednesday",
+  "thursday",
+  "friday",
+  "saturday",
+  "sunday",
+];
 
 export default function Location({ hours, contact }: LocationProps) {
   const phone = contact?.phone || "(470) 399-3351";
@@ -12,217 +23,102 @@ export default function Location({ hours, contact }: LocationProps) {
   const instagramUrl =
     contact?.instagram_url || "https://instagram.com/healingbyali_coach";
 
-  const dayOrder = [
-    "monday",
-    "tuesday",
-    "wednesday",
-    "thursday",
-    "friday",
-    "saturday",
-    "sunday",
-  ];
-
   const hourEntries = hours
     ? dayOrder
         .filter((day) => hours[day])
-        .map(
-          (day) =>
-            `${day.charAt(0).toUpperCase() + day.slice(1)}: ${hours[day]}`
-        )
-    : null;
+        .map((day) => ({
+          day: day.charAt(0).toUpperCase() + day.slice(1),
+          time: hours[day],
+        }))
+    : dayOrder.map((day) => ({
+        day: day.charAt(0).toUpperCase() + day.slice(1),
+        time: "By Appointment",
+      }));
+
+  const details = [
+    {
+      icon: "pin" as const,
+      title: "Flexible Appointment Location",
+      body: "Appointments are available at a private location or through mobile service. The exact appointment location is provided after your booking is confirmed.",
+    },
+    {
+      icon: "car" as const,
+      title: "Mobile Service Available",
+      body: "Prefer to receive your session at your location? Mobile appointments are available. Travel fees may apply depending on distance.",
+    },
+  ];
 
   return (
-    <section id="location" className="py-24 bg-cream">
-      <div className="mx-auto max-w-5xl px-6">
-        {/* Header */}
-        <div className="text-center space-y-4 mb-16">
-          <p className="text-gold-dark font-semibold tracking-widest uppercase text-sm">
-            Appointments
-          </p>
+    <section id="location" className="py-28 bg-sand">
+      <div className="mx-auto max-w-7xl px-6">
+        <SectionHeading
+          eyebrow="Appointments"
+          title="Book your session"
+          intro="All services are available by appointment Monday through Sunday. Sessions are designed to provide a private, personalized experience tailored to your needs."
+        />
 
-          <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold text-warm-brown-dark">
-            Book Your Session
-          </h2>
-
-          <p className="max-w-2xl mx-auto text-warm-brown-light leading-relaxed">
-            All services are available by appointment Monday through Sunday.
-            Sessions are designed to provide a private, personalized
-            experience tailored to your needs.
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-10 items-start">
-          {/* Appointment Information */}
-          <div className="bg-off-white rounded-2xl p-8 shadow-lg space-y-7">
-            <div>
-              <h3 className="font-[family-name:var(--font-playfair)] text-2xl font-bold text-warm-brown-dark">
-                By Appointment Only
+        <div className="grid lg:grid-cols-3 gap-6">
+          {/* Hours */}
+          <div className="bg-ivory rounded-3xl p-8 lg:p-10">
+            <div className="flex items-center gap-3 mb-6">
+              <Icon name="clock" className="w-5 h-5 text-clay" />
+              <h3 className="font-display text-2xl font-medium text-forest">
+                Availability
               </h3>
-
-              <p className="text-warm-brown-light text-sm mt-2 leading-relaxed">
-                Appointments are available throughout the week. Please book
-                your session in advance so your time can be reserved.
-              </p>
             </div>
-
-            {/* Appointment Location */}
-            <div className="flex items-start gap-3">
-              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center">
-                <svg
-                  className="w-5 h-5 text-gold-dark"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
+            <dl className="divide-y divide-sand-dark">
+              {hourEntries.map((entry) => (
+                <div
+                  key={entry.day}
+                  className="flex items-center justify-between py-3 text-sm"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 21s7-4.35 7-10a7 7 0 10-14 0c0 5.65 7 10 7 10z"
-                  />
-                  <circle cx="12" cy="11" r="2.5" />
-                </svg>
-              </div>
+                  <dt className="text-forest font-medium">{entry.day}</dt>
+                  <dd className="text-stone">{entry.time}</dd>
+                </div>
+              ))}
+            </dl>
+            <p className="mt-6 text-sm text-stone">
+              By appointment only &mdash; please book in advance so your time
+              can be reserved.
+            </p>
+          </div>
 
-              <div>
-                <p className="font-semibold text-warm-brown-dark">
-                  Flexible Appointment Location
-                </p>
-
-                <p className="text-warm-brown text-sm leading-relaxed mt-1">
-                  Appointments are available at a private location or through
-                  mobile service. The exact appointment location is provided
-                  after your booking is confirmed.
-                </p>
-              </div>
-            </div>
-
-            {/* Hours */}
-            <div className="flex items-start gap-3">
-              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center">
-                <svg
-                  className="w-5 h-5 text-gold-dark"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-              </div>
-
-              <div>
-                <p className="font-semibold text-warm-brown-dark">
-                  Availability
-                </p>
-
-                <div className="text-warm-brown text-sm space-y-1 mt-1">
-                  {hourEntries ? (
-                    hourEntries.map((entry) => (
-                      <p key={entry}>{entry}</p>
-                    ))
-                  ) : (
-                    <>
-                      <p>Monday: By Appointment</p>
-                      <p>Tuesday: By Appointment</p>
-                      <p>Wednesday: By Appointment</p>
-                      <p>Thursday: By Appointment</p>
-                      <p>Friday: By Appointment</p>
-                      <p>Saturday: By Appointment</p>
-                      <p>Sunday: By Appointment</p>
-                    </>
-                  )}
+          {/* Details */}
+          <div className="bg-ivory rounded-3xl p-8 lg:p-10 space-y-8">
+            {details.map((d) => (
+              <div key={d.title} className="flex gap-4">
+                <span className="flex-shrink-0 w-11 h-11 rounded-full bg-sand text-clay-dark flex items-center justify-center">
+                  <Icon name={d.icon} />
+                </span>
+                <div>
+                  <p className="font-display text-xl font-medium text-forest">
+                    {d.title}
+                  </p>
+                  <p className="text-stone text-sm leading-relaxed mt-1">
+                    {d.body}
+                  </p>
                 </div>
               </div>
-            </div>
-
-            {/* Mobile Service */}
-            <div className="flex items-start gap-3">
-              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center">
-                <svg
-                  className="w-5 h-5 text-gold-dark"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M3 12h18M5 12l2-7h10l2 7M6 12v6m12-6v6M8 18h8"
-                  />
-                </svg>
-              </div>
-
+            ))}
+            <div className="flex gap-4">
+              <span className="flex-shrink-0 w-11 h-11 rounded-full bg-sand text-clay-dark flex items-center justify-center">
+                <Icon name="phone" />
+              </span>
               <div>
-                <p className="font-semibold text-warm-brown-dark">
-                  Mobile Service Available
+                <p className="font-display text-xl font-medium text-forest">
+                  Phone &amp; Instagram
                 </p>
-
-                <p className="text-warm-brown text-sm leading-relaxed mt-1">
-                  Prefer to receive your session at your location? Mobile
-                  appointments are available. Travel fees may apply depending
-                  on distance.
-                </p>
-              </div>
-            </div>
-
-            {/* Phone */}
-            <div className="flex items-start gap-3">
-              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center">
-                <svg
-                  className="w-5 h-5 text-gold-dark"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"
-                  />
-                </svg>
-              </div>
-
-              <div>
-                <p className="font-semibold text-warm-brown-dark">Phone</p>
-
                 <a
                   href={`tel:+1${phoneDigits}`}
-                  className="text-warm-brown hover:text-gold-dark transition-colors"
+                  className="block text-sm text-stone hover:text-clay-dark transition-colors mt-1"
                 >
                   {phone}
                 </a>
-              </div>
-            </div>
-
-            {/* Instagram */}
-            <div className="flex items-start gap-3">
-              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center">
-                <svg
-                  className="w-5 h-5 text-gold-dark"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.28-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z" />
-                </svg>
-              </div>
-
-              <div>
-                <p className="font-semibold text-warm-brown-dark">
-                  Instagram
-                </p>
-
                 <a
                   href={instagramUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-warm-brown hover:text-gold-dark transition-colors"
+                  className="block text-sm text-stone hover:text-clay-dark transition-colors"
                 >
                   {instagram}
                 </a>
@@ -230,36 +126,35 @@ export default function Location({ hours, contact }: LocationProps) {
             </div>
           </div>
 
-          {/* Booking message */}
-          <div className="bg-warm-brown-dark text-off-white rounded-2xl p-8 md:p-10 shadow-lg">
-            <p className="text-gold tracking-widest uppercase text-sm font-semibold mb-4">
+          {/* Experience */}
+          <div className="bg-forest text-ivory rounded-3xl p-8 lg:p-10 flex flex-col">
+            <p className="text-xs tracking-[0.25em] uppercase text-moss-light mb-4">
               Your Experience
             </p>
-
-            <h3 className="font-[family-name:var(--font-playfair)] text-3xl md:text-4xl font-bold mb-6">
-              Personalized Care, Wherever You Need It
+            <h3 className="font-display text-3xl md:text-4xl font-medium leading-tight mb-6">
+              Personalized care, wherever you need it
             </h3>
-
-            <p className="text-off-white/80 leading-relaxed mb-6">
+            <p className="text-ivory/75 leading-relaxed mb-4">
               Every appointment is designed around your individual goals and
               wellness needs. Choose a private appointment setting or request
               mobile service for added convenience.
             </p>
-
-            <p className="text-off-white/80 leading-relaxed mb-8">
+            <p className="text-ivory/75 leading-relaxed">
               Once your appointment is booked, you will receive the information
               needed to prepare for your session, including the exact
               appointment location when applicable.
             </p>
-
-            <div className="border-t border-off-white/20 pt-6">
-              <p className="text-sm text-off-white/60">
-                Appointments available Monday through Sunday
-              </p>
-
-              <p className="text-sm text-off-white/60 mt-2">
-                Booking required • Private appointments • Mobile service
-                available
+            <div className="mt-auto pt-8">
+              <a
+                href={`tel:+1${phoneDigits}`}
+                className="flex items-center justify-center gap-2 rounded-full bg-clay px-6 py-4 text-sm font-medium tracking-wide hover:bg-clay-dark transition-colors"
+              >
+                <Icon name="phone" className="w-4 h-4" />
+                Call {phone}
+              </a>
+              <p className="text-xs text-ivory/50 text-center mt-4">
+                Booking required &middot; Private appointments &middot; Mobile
+                service available
               </p>
             </div>
           </div>

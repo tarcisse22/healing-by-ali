@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { SectionHeading } from "./ui";
 
 const faqs = [
   {
@@ -41,58 +42,50 @@ const faqs = [
 ];
 
 export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="py-24 bg-cream">
-      <div className="mx-auto max-w-3xl px-6">
-        <div className="text-center space-y-4 mb-16">
-          <p className="text-gold-dark font-semibold tracking-widest uppercase text-sm">
-            Common Questions
-          </p>
-          <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold text-warm-brown-dark">
-            Frequently Asked Questions
-          </h2>
+    <section id="faq" className="py-28 bg-ivory">
+      <div className="mx-auto max-w-7xl px-6 grid lg:grid-cols-[0.8fr_1.2fr] gap-12 lg:gap-20">
+        <div className="lg:sticky lg:top-32 self-start">
+          <SectionHeading
+            align="left"
+            eyebrow="Common Questions"
+            title="Frequently asked questions"
+            intro="Can’t find what you’re looking for? Call for a free 10-minute consultation."
+          />
         </div>
 
-        <div className="space-y-4">
-          {faqs.map((faq, index) => (
-            <div
-              key={index}
-              className="bg-off-white rounded-2xl shadow-md overflow-hidden"
-            >
-              <button
-                onClick={() =>
-                  setOpenIndex(openIndex === index ? null : index)
-                }
-                className="w-full flex items-center justify-between p-6 text-left hover:bg-cream-light/50 transition-colors"
-              >
-                <span className="font-semibold text-warm-brown-dark pr-4">
-                  {faq.question}
-                </span>
-                <svg
-                  className={`w-5 h-5 text-gold-dark flex-shrink-0 transition-transform ${openIndex === index ? "rotate-180" : ""}`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  strokeWidth={2}
+        <div className="border-t border-sand-dark">
+          {faqs.map((faq, index) => {
+            const open = openIndex === index;
+            return (
+              <div key={index} className="border-b border-sand-dark">
+                <button
+                  onClick={() => setOpenIndex(open ? null : index)}
+                  aria-expanded={open}
+                  className="w-full flex items-center justify-between gap-6 py-6 text-left group"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </button>
-              {openIndex === index && (
-                <div className="px-6 pb-6">
-                  <p className="text-warm-brown leading-relaxed">
+                  <span className="font-display text-xl md:text-2xl text-forest group-hover:text-clay-dark transition-colors">
+                    {faq.question}
+                  </span>
+                  <span
+                    className={`flex-shrink-0 w-9 h-9 rounded-full border flex items-center justify-center transition-all ${open ? "bg-forest border-forest text-ivory rotate-45" : "border-sand-dark text-forest"}`}
+                    aria-hidden="true"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
+                      <path strokeLinecap="round" d="M12 5v14M5 12h14" />
+                    </svg>
+                  </span>
+                </button>
+                {open && (
+                  <p className="pb-7 pr-14 text-stone leading-relaxed">
                     {faq.answer}
                   </p>
-                </div>
-              )}
-            </div>
-          ))}
+                )}
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
